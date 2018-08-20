@@ -1,12 +1,16 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+// cdcdcd
+// d81e06
 Page({
   data: {
-    motto: 'Hello World',
+    swiperList:[],
     userInfo: {},
     hasUserInfo: false,
+    autoplay: true,
+    interval: 5000,
+    duration: 300,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
@@ -16,6 +20,7 @@ Page({
     })
   },
   onLoad: function () {
+      this.getSwiper()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -42,6 +47,22 @@ Page({
         }
       })
     }
+  },
+  getSwiper: function() {
+    //
+        wx.request({
+          url: 'https://event-storage-api-ms.juejin.im/v1/getEventList?src=web&orderType=startTime&bannerStartTime=2018-08-20T15%3A59%3A59.999Z&pageNum=1&pageSize=20&showBanner=1', //仅为示例，并非真实的接口地址
+          data: {
+          },
+          header: {
+          	'content-type': 'application/json' // 默认值
+          },
+          success: (res) => {
+            this.setData({
+                swiperList: res.data.d
+            })
+          }
+        })
   },
   getUserInfo: function(e) {
     console.log(e)
