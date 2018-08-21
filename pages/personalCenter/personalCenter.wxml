@@ -1,6 +1,12 @@
 <!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<view class="container">
+   <view class='login-wrap'>
+      <view class='login-bar' bindtap='goLogin'>
+          <text class='login-txt'>登录/注册</text>
+          <block>
+              <image class='arrow-img' src='./../../common/image/profile_arrow.png'></image>
+          </block>
+      </view>
+   </view>
+
 </view>

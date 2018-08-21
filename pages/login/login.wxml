@@ -1,0 +1,11 @@
+<!--logs.wxml-->
+<view class="container">
+  <view class='input-wrap'>
+      <form bindsubmit="formSubmit">
+          <input class='phone' placeholder="手机号" type='number' name='phoneNumber'/>
+          <input class='password' placeholder="密码" password='true'type='text' name='password'/>
+          <button class='login-btn' formType="submit">登录</button>
+      </form>
+  </view>
+
+</view>

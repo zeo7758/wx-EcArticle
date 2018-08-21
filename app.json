@@ -1,7 +1,9 @@
 {
     "pages":[
         "pages/index/index",
-        "pages/personalCenter/personalCenter"
+        "pages/personalCenter/personalCenter",
+        "pages/login/login",
+        "pages/me/me"
     ],
     "window":{
         "backgroundTextStyle":"light",

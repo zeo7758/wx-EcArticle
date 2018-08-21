@@ -1,0 +1,19 @@
+.input-wrap{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20%;
+}
+.input-wrap input{
+    border: 1px solid #8d8d8d;
+    font-size: 14px;
+    height: 32px;
+    padding-left: 10rpx;
+}
+.login-btn{
+    background: #ea6f5a;
+    border:none;
+    color:#fff;
+}
+.password{
+    margin: 20rpx 0 40rpx;
+}

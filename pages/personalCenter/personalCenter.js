@@ -5,11 +5,16 @@ Page({
   data: {
     logs: []
   },
-  onLoad: function () {
-    this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(log => {
-        return util.formatTime(new Date(log))
-      })
-    })
-  }
+    onLoad: function () {
+        this.setData({
+            logs: (wx.getStorageSync('logs') || []).map(log => {
+                return util.formatTime(new Date(log))
+            })
+        })
+    },
+    goLogin() {
+        wx.redirectTo({
+            url:'/pages/login/login'
+        })
+    }
 })

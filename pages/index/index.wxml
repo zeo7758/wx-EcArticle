@@ -1,11 +1,29 @@
 <!--index.wxml-->
-<view class='swiper-wrap'>
-    <swiper class='swiper' indicator-dots="true"
-      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{swiperList}}" wx:key="{{item._id}}">
-        <swiper-item>
-          <image src="{{item.screenshot}}" class="slide-image" width="355" height="150"/>
-        </swiper-item>
+<view class='container'>
+    <view class='swiper-wrap'>
+        <swiper class='swiper' indicator-dots="true"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{swiperList}}" wx:key="{{item._id}}">
+            <swiper-item>
+              <image src="{{item.screenshot}}" class="slide-image" width="355" height="150"/>
+            </swiper-item>
+          </block>
+        </swiper>
+    </view>
+    <view>
+      <block wx:for='{{hotRecomonList}}' wx:key='item._id'>
+          <view class='cm-pd-tb cm-mg-lr list-item'>
+                <view>
+                    <text class='list-title'>{{item.title}}</text>
+                </view>
+                <view>
+                    <text class='list-content'>{{item.content}}</text>
+                </view>
+                <view>
+                    <text class='articleType {{item.category.title}}'>{{item.category.name}}</text>
+                    <text class='username'>{{item.user.username}}</text>
+                </view>
+         </view>
       </block>
-    </swiper>
+    </view>
 </view>

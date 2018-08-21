@@ -6,6 +6,7 @@ const app = getApp()
 Page({
   data: {
     swiperList:[],
+    hotRecomonList:[],
     userInfo: {},
     hasUserInfo: false,
     autoplay: true,
@@ -14,39 +15,57 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  // bindViewTap: function() {
+  //   wx.navigateTo({
+  //     url: '../logs/logs'
+  //   })
+  // },
+  onPullDownRefresh: function() {
+      // console.log(111111);
+      // wx.startPullDownRefresh()
   },
-  onLoad: function () {
-      this.getSwiper()
-    if (app.globalData.userInfo) {
+  onReachBottom: function() {
+      console.log(222);
+      this.getHotList();
+  },
+  onShow: function () {
+      wx.showLoading({
+        title: '数据加载中',
+      })
+      this.init();
+    // if (app.globalData.userInfo) {
+    //   this.setData({
+    //     userInfo: app.globalData.userInfo,
+    //     hasUserInfo: true
+    //   })
+    // } else if (this.data.canIUse){
+    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //   // 所以此处加入 callback 以防止这种情况
+    //   app.userInfoReadyCallback = res => {
+    //     this.setData({
+    //       userInfo: res.userInfo,
+    //       hasUserInfo: true
+    //     })
+    //   }
+    // } else {
+    //   // 在没有 open-type=getUserInfo 版本的兼容处理
+    //   wx.getUserInfo({
+    //     success: res => {
+    //       app.globalData.userInfo = res.userInfo
+    //       this.setData({
+    //         userInfo: res.userInfo,
+    //         hasUserInfo: true
+    //       })
+    //     }
+    //   })
+    // }
+  },
+  init:function() {
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+          hotRecomonList:[]
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+      this.getSwiper()
+      this.getHotList(1)
   },
   getSwiper: function() {
     //
@@ -63,6 +82,24 @@ Page({
             })
           }
         })
+  },
+  getHotList(pageNum) {
+    wx.request({
+        // https://recommender-api-ms.juejin.im/v1/get_recommended_entry?suid=rfaBMiNJezFqBayeufVa&ab=welcome_3&src=web
+        url:'https://recommender-api-ms.juejin.im/v1/get_recommended_entry',
+        data:{
+            suid:"rfaBMiNJezFqBayeufVa",
+            ab:"welcome_3",
+            src: "web"
+        },
+        success: (res)=> {
+            console.log(res.data.d);
+            wx.hideLoading()
+            this.setData({
+                hotRecomonList: this.data.hotRecomonList.concat(res.data.d)
+            })
+        }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
