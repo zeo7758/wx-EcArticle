@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class='container'>
-    <view class='swiper-wrap'>
+    <view class='swiper-wrap' wx:if='{{swiperList.length > 0}}'>
         <swiper class='swiper' indicator-dots="true"
           autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
           <block wx:for="{{swiperList}}" wx:key="{{item._id}}">

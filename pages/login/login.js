@@ -5,9 +5,6 @@ Page({
   data: {
 
   },
-  onLoad: function () {
-
-  },
   formSubmit(e){
       let data = e.detail.value;
       this.login(data)
@@ -23,13 +20,24 @@ Page({
               console.log(res);
               if(res.statusCode == 200) {
                   // 登录成功
+                  wx.setStorage({
+                      key:'auth',
+                      data: {
+                        'token': res.data.token,
+                        'uid': res.data.userId,
+                        'clientId': res.data.clientId,
+                      }
+                  })
                   wx.showToast({
                       title: '登录成功',
                       icon: 'success',
                       duration: 2000,
                       complete: () => {
                           console.log(222222);
-                          wx.navigateBack({});
+                          wx.redirectTo({
+                              url:'/pages/personalCenter/personalCenter'
+                          })
+
                       }
                     })
               }else if(res.statusCode == 401) {

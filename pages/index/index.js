@@ -12,21 +12,31 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 300,
+    auth: '',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  // bindViewTap: function() {
-  //   wx.navigateTo({
-  //     url: '../logs/logs'
-  //   })
-  // },
+  onShow: function () {
+      // let auth = wx.getStorageSync('auth') || '';
+      // if(auth) {
+      //     this.setData({
+      //       auth: auth
+      //     })
+      // }
+  },
   onPullDownRefresh: function() {
       // console.log(111111);
       // wx.startPullDownRefresh()
+      this.getData();
   },
   onReachBottom: function() {
-      console.log(222);
-      this.getHotList();
+      let auth = wx.getStorageSync('auth') || '';
+      if(auth) {
+          // 有登录态
+          this.getEntryRank(auth)
+      }else {
+          // 无登录态
+          this.getHotList()
+      }
   },
   onShow: function () {
       wx.showLoading({
@@ -60,23 +70,62 @@ Page({
     //   })
     // }
   },
+  getData(){
+      console.log();
+      let auth = wx.getStorageSync('auth') || '';
+      if(auth) {
+          // 有登录态
+          this.getSwiper(auth)
+          this.getEntryRank(auth)
+      }else {
+          // 无登录态
+          this.getHotList()
+      }
+  },
   init:function() {
       this.setData({
           hotRecomonList:[]
       })
-      this.getSwiper()
-      this.getHotList(1)
+      this.getData()
   },
-  getSwiper: function() {
-    //
+  getEntryRank(data) {
+      wx.request({
+        url: 'https://timeline-merger-ms.juejin.im/v1/get_entry_by_rank', //仅为示例，并非真实的接口地址
+        data: {
+            src: "web",
+            uid: data.uid,
+            device_id: data.clientId,
+            token: data.token,
+            limit: 20,
+            category: 'all',
+            recomment: 1
+        },
+        success: (res) => {
+
+          wx.hideLoading()
+          this.setData({
+              hotRecomonList: this.data.hotRecomonList.concat(res.data.d.entrylist)
+          })
+        }
+      })
+  },
+  getSwiper: function(data) {
         wx.request({
-          url: 'https://event-storage-api-ms.juejin.im/v2/getEventList?uid=58e099f061ff4b006b1a9ba0&src=web&orderType=startTime&cityAlias=&pageNum=4&pageSize=5', //仅为示例，并非真实的接口地址
+          url: 'https://event-storage-api-ms.juejin.im/v2/getEventList', //仅为示例，并非真实的接口地址
           data: {
+              src: "web",
+              uid: data.uid,
+              device_id: data.clientId,
+              token: data.token,
+              orderType:'startTime',
+              pageNum: 4,
+              pageSize: 5
           },
           header: {
           	'content-type': 'application/json' // 默认值
           },
           success: (res) => {
+           console.log(res.data);
             this.setData({
                 swiperList: res.data.d
             })
@@ -84,7 +133,6 @@ Page({
         })
   },
   getHotList(pageNum) {
-
     wx.request({
         // https://recommender-api-ms.juejin.im/v1/get_recommended_entry?suid=rfaBMiNJezFqBayeufVa&ab=welcome_3&src=web
         url:'https://recommender-api-ms.juejin.im/v1/get_recommended_entry',
