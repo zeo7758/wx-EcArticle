@@ -5,13 +5,13 @@
     ],
     "window":{
         "backgroundTextStyle":"light",
-        "navigationBarBackgroundColor": "#d81e06",
+        "navigationBarBackgroundColor": "#ea6f5a",
         "navigationBarTitleText": "webArticle",
         "navigationBarTextStyle":"#fff"
     },
     "tabBar": {
       "color": "#cdcdcd",
-      "selectedColor": "#d81e06",
+      "selectedColor": "#ea6f5a",
        "list": [
            {
              "pagePath": "pages/index/index",

@@ -51,7 +51,7 @@ Page({
   getSwiper: function() {
     //
         wx.request({
-          url: 'https://event-storage-api-ms.juejin.im/v1/getEventList?src=web&orderType=startTime&bannerStartTime=2018-08-20T15%3A59%3A59.999Z&pageNum=1&pageSize=20&showBanner=1', //仅为示例，并非真实的接口地址
+          url: 'https://event-storage-api-ms.juejin.im/v2/getEventList?uid=58e099f061ff4b006b1a9ba0&src=web&orderType=startTime&cityAlias=&pageNum=4&pageSize=5', //仅为示例，并非真实的接口地址
           data: {
           },
           header: {
