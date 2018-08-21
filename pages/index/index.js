@@ -84,6 +84,7 @@ Page({
         })
   },
   getHotList(pageNum) {
+
     wx.request({
         // https://recommender-api-ms.juejin.im/v1/get_recommended_entry?suid=rfaBMiNJezFqBayeufVa&ab=welcome_3&src=web
         url:'https://recommender-api-ms.juejin.im/v1/get_recommended_entry',
@@ -94,9 +95,23 @@ Page({
         },
         success: (res)=> {
             console.log(res.data.d);
+
             wx.hideLoading()
             this.setData({
                 hotRecomonList: this.data.hotRecomonList.concat(res.data.d)
+            })
+        },
+        fail: (res) => {
+            wx.showModal({
+              title: '提示',
+              content:JSON.stringify(res),
+              success: function(res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                } else if (res.cancel) {
+                  console.log('用户点击取消')
+                }
+              }
             })
         }
     })
