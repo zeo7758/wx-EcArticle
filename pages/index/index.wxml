@@ -4,7 +4,7 @@
         <swiper class='swiper' indicator-dots="true"
           autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
           <block wx:for="{{swiperList}}" wx:key="{{item._id}}">
-            <swiper-item>
+            <swiper-item class='swiper-items'>
               <image src="{{item.screenshot}}" class="slide-image" width="355" height="150"/>
             </swiper-item>
           </block>

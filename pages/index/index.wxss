@@ -2,10 +2,12 @@
 .swiper{
     width:100%;
     height: 360rpx;
-    /* margin-top: -40rpx; */
 }
-.swiper img{
+.swiper image{
     width: 100%
+}
+.swiper-items{
+    width: 100%;
 }
 .swiper-wrap{
     width:100%;
