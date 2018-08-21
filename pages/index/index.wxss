@@ -19,3 +19,13 @@
 .usermotto {
   margin-top: 200px;
 }
+.swiper{
+    width:100%
+}
+.swiper img{
+    width: 100%
+}
+.swiper-wrap{
+    width:100%;
+    height:auto;
+}
