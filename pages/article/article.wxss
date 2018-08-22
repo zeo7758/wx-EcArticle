@@ -1,8 +1,69 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+@import "/wxParse/wxParse.wxss";
+
+.article-content{
+    font-size:14px;
+    padding:20rpx 30rpx 40rpx;
 }
-.log-item {
-  margin: 10rpx;
+.article-title{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 24rpx 30rpx;
+}
+.article-user{
+    display: flex;
+    height: 200rpx;
+    border-bottom: 1rpx solid #ececec;
+    align-items: center;
+    margin: 0 30rpx;
+    justify-content: space-around;
+}
+.create-time{
+    flex:1;
+    margin-left: 20rpx;
+    font-size: 12px;
+    color: #909090;
+}
+.username{
+    font-size: 14px;
+    color:#000;
+    display: block;
+}
+.head{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.wxParse-p {
+  margin-top: 44rpx;
+  margin-bottom: 44rpx;
+  line-height: 52rpx;
+}
+.wxParse-h1 {
+  font-size: 48rpx;
+}
+.wxParse-h2 {
+  font-size: 40rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+.wxParse-a {
+  color: #0269c8;
+  border-bottom: 1rpx solid #d1e9ff;
+}
+.wxParse-li-circle {
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.wxParse-li-text {
+  line-height: 52rpx;
+}
+.wxParse-hr {
+  border-top: 1rpx solid #ddd;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
 }

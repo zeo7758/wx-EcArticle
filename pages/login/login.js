@@ -34,10 +34,8 @@ Page({
                       duration: 2000,
                       complete: () => {
                           console.log(222222);
-                          wx.redirectTo({
-                              url:'/pages/personalCenter/personalCenter'
-                          })
-
+                          wx.navigateBack({
+                            })
                       }
                     })
               }else if(res.statusCode == 401) {

@@ -12,7 +12,7 @@
     </view>
     <view>
       <block wx:for='{{hotRecomonList}}' wx:key='item._id'>
-          <view class='cm-pd-tb cm-mg-lr list-item'>
+          <view class='cm-pd-tb cm-mg-lr list-item' bindtap='goArticle' data-url='{{item.originalUrl}}'>
                 <view>
                     <text class='list-title'>{{item.title}}</text>
                 </view>

@@ -70,6 +70,17 @@ Page({
     //   })
     // }
   },
+  goArticle(evt) {
+      let url = evt.currentTarget.dataset.url;
+      let arr = url.split('/post/'),
+          id = arr[1];
+          console.log(url);
+          console.log(id);
+          let goUrl = '/pages/article/article?id='+ id
+          wx.navigateTo({
+              url:goUrl
+          })
+  },
   getData(){
       console.log();
       let auth = wx.getStorageSync('auth') || '';

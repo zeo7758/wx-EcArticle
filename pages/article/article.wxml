@@ -1,6 +1,17 @@
+<import src="../../wxParse/wxParse.wxml"/>
 <!--logs.wxml-->
 <view class="container">
-  <view>
-
+    <view class='article-user' bindtap='goUser'>
+        <view class='head' style='background-image: url({{articleInfo.user.avatarLarge}})'></view>
+        <view class='create-time'>
+            <text class='username'>{{articleInfo.user.username}}</text>
+            <text>{{articleInfo.formatTime}} 阅读 {{articleInfo.viewsCount}}</text>
+        </view>
+    </view>
+    <view class='article-title'>
+        <text>{{articleInfo.title}}</text>
+    </view>
+  <view class='article-content'>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>
 </view>

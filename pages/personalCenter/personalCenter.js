@@ -3,18 +3,46 @@ const util = require('../../utils/util.js')
 
 Page({
   data: {
-    logs: []
+    userInfo: {},
+    auth:{}
   },
     onLoad: function () {
+    },
+    onShow() {
+        let auth =  wx.getStorageSync('auth') || {}
         this.setData({
-            logs: (wx.getStorageSync('logs') || []).map(log => {
-                return util.formatTime(new Date(log))
-            })
+            auth
         })
+        this.getUserInfos()
     },
     goLogin() {
-        wx.redirectTo({
+        wx.navigateTo({
             url:'/pages/login/login'
+        })
+    },
+    goMeCenter() {
+        wx.navigateTo({
+            url:'/pages/me/me'
+        })
+    },
+    getUserInfos() {
+        let auth = wx.getStorageSync('auth');
+        wx.request({
+            url:'https://user-storage-api-ms.juejin.im/v1/getUserInfo',
+            data:{
+                  src: "web",
+                  uid: auth.uid,
+                  token: auth.token,
+                  device_id: auth.clientId,
+                  current_uid: auth.uid
+            },
+            success:(res) => {
+                console.log(res.data);
+                this.setData({
+                    userInfo: res.data.d
+                })
+            }
+
         })
     }
 })

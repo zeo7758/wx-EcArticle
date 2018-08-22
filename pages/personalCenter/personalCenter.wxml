@@ -1,12 +1,96 @@
 <!--logs.wxml-->
 <view class="container">
-   <view class='login-wrap'>
-      <view class='login-bar' bindtap='goLogin'>
+   <view class='items card'>
+      <view class='login-bar' bindtap='goLogin' wx:if='{{!auth.token}}'>
           <text class='login-txt'>登录/注册</text>
           <block>
               <image class='arrow-img' src='./../../common/image/profile_arrow.png'></image>
           </block>
       </view>
+      <view class='profile' wx:else bindtap='goMeCenter'>
+          <view class='info'>
+            <image class='avatar' mode='aspectFill' src='{{peopleInfo.avatarLarge}}' wx:if='{{peopleInfo.avatarLarge}}'></image>
+            <image class='avatar' src='../../common/image/ico-my-g.png' wx:else></image>
+            <view class='text'>
+              <view class='name'>{{userInfo.username}}</view>
+              <view class='jobtitle'>{{userInfo.jobTitle}}</view>
+              <view class='others'>{{userInfo.selfDescription }}</view>
+            </view>
+          </view>
+      </view>
    </view>
 
+   <view class='card items'>
+     <view class='item' hover-class='hover-class'>
+       <view class='title'>
+         <image src='../../common/image/ic_notification.png'></image>
+         <view>消息中心</view>
+       </view>
+       <view class='count reddot' wx:if='{{userNotificationNum}}'>{{userNotificationNum}}</view>
+     </view>
+     <view class='item' hover-class='hover-class'>
+       <view class='title'>
+         <image src='../../common/image/ic_heart_entry_bottom_full.png'></image>
+         <view>我喜欢的</view>
+       </view>
+       <view class='count'>{{userInfo.collectedEntriesCount || 0}}篇</view>
+     </view>
+     <view class='item' hover-class='hover-class' >
+       <view class='title'>
+         <image src='../../common/image/ic_collection_set.png'></image>
+         <view>收藏集</view>
+       </view>
+       <view class='count'>{{userInfo.collectionSetCount || 0}}个</view>
+     </view>
+     <view class='item' hover-class='hover-class'>
+       <view class='title'>
+         <image src='../../common/image/user_buy.png'></image>
+         <view>已购小册</view>
+       </view>
+       <view class='count'>{{userInfo.purchasedBookletCount
+  || 0}}本</view>
+     </view>
+     <view class='item' hover-class='hover-class'>
+       <view class='title'>
+         <image src='../../common/image/user_liked_pin.png'></image>
+         <view>赞过的沸点</view>
+       </view>
+       <view class='count'>{{userInfo.likedPinCount || 0}}个</view>
+     </view>
+     <view class='item' hover-class='hover-class' >
+       <view class='title'>
+         <image src='../../common/image/view.png'></image>
+         <view>阅读过的文章</view>
+       </view>
+       <view class='count'>{{userInfo.viewedEntriesCount || 0}}篇</view>
+     </view>
+     <view class='item' hover-class='hover-class' >
+       <view class='title'>
+         <image src='../../common/image/tag.png'></image>
+         <view>标签管理</view>
+       </view>
+       <view class='count'>{{userInfo.subscribedTagsCount || 0}}个</view>
+     </view>
+   </view>
+
+   <view class='card items'>
+     <view class='item' hover-class='hover-class' >
+       <view class='title'>
+         <image src='../../common/image/icon_feed_back.png'></image>
+         <view>意见反馈</view>
+       </view>
+     </view>
+     <view class='item' hover-class='hover-class'>
+       <view class='title'>
+         <image src='../../common/image/settings.png'></image>
+         <view>设置</view>
+       </view>
+     </view>
+     <view class='item' hover-class='hover-class'>
+       <view class='title'>
+         <image src='../../common/image//qrcode.png' style='width:28rpx;height:28rpx;padding:10rpx'></image>
+         <view>小程序码</view>
+       </view>
+     </view>
+   </view>
 </view>

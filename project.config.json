@@ -39,6 +39,12 @@
 					"name": "personalcenter",
 					"pathName": "pages/login/login",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "article",
+					"pathName": "pages/article/article",
+					"query": "id=5b7be0b2e51d4538db34a51e"
 				}
 			]
 		}
