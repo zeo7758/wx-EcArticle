@@ -4,7 +4,8 @@
         "pages/personalCenter/personalCenter",
         "pages/login/login",
         "pages/me/me",
-        "pages/article/article"
+        "pages/article/article",
+        "pages/undev/undev"
     ],
     "window":{
         "backgroundTextStyle":"light",

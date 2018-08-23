@@ -25,8 +25,8 @@
     </view>
   </view>
 
-  <view class='card items'>
-    <view class='item' hover-class='hover-class' catchtap='navigatItem'  data-open='true'>
+  <view class='card items' >
+    <view class='item' hover-class='hover-class' bindtap='goUndev'>
       <view class='title'>
         <view>动态</view>
       </view>
@@ -34,19 +34,19 @@
   </view>
 
   <view class='card items'>
-    <view class='item' hover-class='hover-class' catchtap='navigatItem'  data-open='true'>
+    <view class='item' hover-class='hover-class' bindtap='goUndev'>
       <view class='title'>
         <view>沸点</view>
       </view>
       <view class='count'>{{peopleInfo.pinCount || 0}}</view>
     </view>
-    <view class='item' hover-class='hover-class' catchtap='navigatItem' data-open='true'>
+    <view class='item' hover-class='hover-class' bindtap='goUndev'>
       <view class='title'>
         <view>原创文章</view>
       </view>
       <view class='count'>{{peopleInfo.postedPostsCount}}</view>
     </view>
-    <view class='item' wx:if='{{peopleInfo.postedEntriesCount}}' hover-class='hover-class' catchtap='navigatItem'  data-open='true'>
+    <view class='item' wx:if='{{peopleInfo.postedEntriesCount}}' hover-class='hover-class' bindtap='goUndev'>
       <view class='title'>
         <view>分享文章</view>
       </view>
@@ -61,13 +61,13 @@
   </view>
 
   <view class='card items'>
-    <view class='item' hover-class='hover-class' catchtap='navigatItem'  data-open='true'>
+    <view class='item' hover-class='hover-class' bindtap='goUndev'>
       <view class='title'>
         <view>喜欢的文章</view>
       </view>
       <view class='count'>{{peopleInfo.collectedEntriesCount}}</view>
     </view>
-    <view class='item' hover-class='hover-class' catchtap='navigatItem' data-open='true'>
+    <view class='item' hover-class='hover-class' bindtap='goUndev'>
       <view class='title'>
         <view>关注的标签</view>
       </view>

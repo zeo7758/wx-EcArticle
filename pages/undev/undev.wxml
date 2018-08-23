@@ -1,0 +1,6 @@
+<!--logs.wxml-->
+<view class="container">
+  <view class='wrap'>
+      <text>功能后续上线中，敬请期待~</text>
+  </view>
+</view>

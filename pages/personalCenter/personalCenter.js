@@ -25,6 +25,11 @@ Page({
             url:'/pages/me/me'
         })
     },
+    goUndev() {
+        wx.navigateTo({
+            url: '/pages/undev/undev'
+        })
+    },
     getUserInfos() {
         let auth = wx.getStorageSync('auth');
         wx.request({

@@ -16,6 +16,11 @@ Page({
           this.getPeopleInfo()
       }
   },
+  goUndev() {
+      wx.navigateTo({
+          url: '/pages/undev/undev'
+      })
+  },
   getPeopleInfo() {
       let auth = wx.getStorageSync('auth');
       wx.request({
